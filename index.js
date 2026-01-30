@@ -63,6 +63,14 @@ app.post("/login",async(req,res)=>{
         res.status(500).json({msg:error.message})
     }
 })
+app.get("/",async(req,res)=>{
+    try {
+        let data=await collection.find()
+        res.status(200).json({msg:"data getting",data})
+    } catch (error) {
+        res.status(500).json({msg:error})
+    }
+})
 app.listen(port,()=>{
     console.log('Server running on',port)
 })
